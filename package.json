@@ -1,0 +1,53 @@
+{
+  "name": "nextjs",
+  "scripts": {
+    "postinstall": "npm run gen",
+    "prebuild": "rm -rf dist/",
+    "build": "next build",
+    "pack": "run-s clean build",
+    "gen": "graphql-codegen --config codegen.yml",
+    "start:prod": "next start -p 8080",
+    "start:dev": "next -p 8080"
+  },
+  "author": "Jason Raimondi <jason@raimondi.us>",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=12.12.0"
+  },
+  "dependencies": {
+    "@apollo/react-ssr": "^4.0.0",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "@zeit/next-css": "^1.0.1",
+    "cookie": "^0.4.1",
+    "emotion": "^10.0.27",
+    "formik": "^2.1.5",
+    "graphql": "^15.3.0",
+    "graphql-request": "^3.0.0",
+    "graphql-tag": "^2.11.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "js-cookie": "^2.2.1",
+    "jwt-decode": "^2.2.0",
+    "next": "^9.5.2",
+    "next-cookies": "^2.0.3",
+    "nookies": "^2.4.0",
+    "normalize.css": "^8.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "swr": "^0.3.1",
+    "tsconfig-paths-webpack-plugin": "^3.3.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.17.8",
+    "@graphql-codegen/typescript": "^1.17.9",
+    "@graphql-codegen/typescript-graphql-request": "^2.0.0",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/node": "^14.6.2",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "graphql-toolkit": "^0.7.5",
+    "typescript": "^4.0.2"
+  }
+}

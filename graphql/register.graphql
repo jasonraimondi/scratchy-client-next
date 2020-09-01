@@ -1,0 +1,15 @@
+mutation Register($data: RegisterInput!) {
+  register(data: $data) {
+    user {
+      uuid
+      name
+      email
+    }
+    emailConfirmation {
+      expiresAt
+    }
+  }
+}
+mutation VerifyEmailConfirmation($data: VerifyEmailInput!) {
+  verifyEmailConfirmation(data: $data)
+}
