@@ -5,6 +5,10 @@ import { getSdk } from "@/generated/graphql";
 
 const { publicRuntimeConfig } = getConfig();
 
-const client = new GraphQLClient(`${publicRuntimeConfig.API_URL}/graphql`);
+const client = new GraphQLClient(`${publicRuntimeConfig.API_URL}/graphql`, {
+  headers: {
+    Authorization: "Bearer foo"
+  }
+});
 
 export const apiSDK = getSdk(client);

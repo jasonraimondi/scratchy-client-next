@@ -5,16 +5,15 @@ import useSWR from "swr";
 import { withLayout } from "@/app/components/layouts/layout";
 import { apiSDK } from "@/app/lib/api_sdk";
 
-const userFetcher = (userId: string) => apiSDK.User({ userId })
-const useUser = (userId: string) => {
-  const { data, error } = useSWR(userId, userFetcher);
+const userFetcher = (email: string) => apiSDK.User({ email })
+const useUser = (email: string) => {
+  const { data, error } = useSWR(email, userFetcher);
   return {
     user: data,
     isLoading: !error && !data,
     isError: error
   }
 }
-
 
 // const usersFetcher = () => apiSDK.Users()
 // const useUsers = () => {
@@ -27,8 +26,7 @@ const useUser = (userId: string) => {
 // }
 
 const Index: NextPage<any> = () => {
-  // const { user, isLoading, isError } = useUser();
-  const { user, isLoading, isError } = useUser("72db662c-6d0e-4a5a-b743-c732739db7b7");
+  const { user, isLoading, isError } = useUser("jason@raimondi.us");
   console.log(user, isLoading, isError);
   if (isError) return <div>failed to load</div>
   if (isLoading) return <div>loading...</div>

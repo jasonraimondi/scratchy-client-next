@@ -1,12 +1,9 @@
 mutation Register($data: RegisterInput!) {
   register(data: $data) {
     user {
-      uuid
+      id
       name
       email
-    }
-    emailConfirmation {
-      expiresAt
     }
   }
 }

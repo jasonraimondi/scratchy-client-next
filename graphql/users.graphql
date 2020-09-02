@@ -1,13 +1,13 @@
 query Users {
   users {
-    uuid
+    id
     email
   }
 }
 
-query User($userId: String!) {
-  user(uuid: $userId) {
-    uuid
+query User($email: String!) {
+  user(email: $email) {
+    id
     email
   }
 }
