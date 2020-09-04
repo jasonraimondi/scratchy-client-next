@@ -5,32 +5,27 @@ import useSWR from "swr";
 import { withLayout } from "@/app/components/layouts/layout";
 import { apiSDK } from "@/app/lib/api_sdk";
 
-const userFetcher = (email: string) => apiSDK.User({ email })
+const userFetcher = () => apiSDK.Users({ query: { limit: 2, order: "DESC" } })
 const useUser = (email: string) => {
   const { data, error } = useSWR(email, userFetcher);
+
+  const list = data?.users.data;
+  const cursor = data?.users.cursor;
+
   return {
-    user: data,
+    list,
+    cursor,
     isLoading: !error && !data,
     isError: error
   }
 }
 
-// const usersFetcher = () => apiSDK.Users()
-// const useUsers = () => {
-//   const { data, error } = useSWR("", usersFetcher);
-//   return {
-//     users: data,
-//     isLoading: !error && !data,
-//     isError: error
-//   }
-// }
-
 const Index: NextPage<any> = () => {
-  const { user, isLoading, isError } = useUser("jason@raimondi.us");
-  console.log(user, isLoading, isError);
+  const { list, cursor, isLoading, isError } = useUser("jason@raimondi.us");
+  console.log(list, isLoading, isError);
   if (isError) return <div>failed to load</div>
   if (isLoading) return <div>loading...</div>
-  return <div>hello {JSON.stringify(user)}!</div>
+  return <div>hello {JSON.stringify(cursor)} {JSON.stringify(list)}!</div>
 
   // let body;
   // if (!data) {
